@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
-namespace Puppetoon
+namespace Edwon.ARFaceTools
 {
     public class ARFacePoseReceiver : MonoBehaviour
     {

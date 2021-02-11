@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Puppetoon
+namespace Edwon.ARFaceTools
 {
     public class ARFacePoseSender : MonoBehaviour
     {

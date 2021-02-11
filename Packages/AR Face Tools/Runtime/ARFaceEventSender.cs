@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARKit;
 
-namespace Puppetoon
+namespace Edwon.ARFaceTools
 {
     [RequireComponent(typeof(ARFace))]
     public class ARFaceEventSender : MonoBehaviour
     {
         ARFace arFace;
 
-        // ARKitFaceSubsystem arKitFaceSubsystem;
-        // Dictionary<ARKitBlendShapeLocation, float> blendShapeValuesToSend;
+        ARKitFaceSubsystem arKitFaceSubsystem;
+        Dictionary<ARKitBlendShapeLocation, float> blendShapeValuesToSend;
 
         void Awake()
         {
@@ -28,22 +27,22 @@ namespace Puppetoon
 
         void OnFaceUpdated(ARFaceUpdatedEventArgs eventArgs)
         {
-            // using (NativeArray<ARKitBlendShapeCoefficient> blendShapes = arKitFaceSubsystem.GetBlendShapeCoefficients(arFace.trackableId, Allocator.Temp))
-            // {
-            //     foreach(ARKitBlendShapeCoefficient blendShape in blendShapes)
-            //     {
-            //         if (blendShapeValuesToSend.ContainsKey(blendShape.blendShapeLocation))
-            //         {
-            //             blendShapeValuesToSend[blendShape.blendShapeLocation] = blendShape.coefficient;
-            //         }
-            //         else
-            //         {
-            //             blendShapeValuesToSend.Add(blendShape.blendShapeLocation, blendShape.coefficient);
-            //         }
-            //     }
-            // }
+            using (NativeArray<ARKitBlendShapeCoefficient> blendShapes = arKitFaceSubsystem.GetBlendShapeCoefficients(arFace.trackableId, Allocator.Temp))
+            {
+                foreach(ARKitBlendShapeCoefficient blendShape in blendShapes)
+                {
+                    if (blendShapeValuesToSend.ContainsKey(blendShape.blendShapeLocation))
+                    {
+                        blendShapeValuesToSend[blendShape.blendShapeLocation] = blendShape.coefficient;
+                    }
+                    else
+                    {
+                        blendShapeValuesToSend.Add(blendShape.blendShapeLocation, blendShape.coefficient);
+                    }
+                }
+            }
 
-            // ARFaceTrackingUtils.InvokeOnFaceUpdatedEvent(eventArgs, blendShapeValuesToSend);
+            ARFaceTrackingUtils.InvokeOnFaceUpdatedEvent(eventArgs, blendShapeValuesToSend);
         }
 
         void OnEnable()

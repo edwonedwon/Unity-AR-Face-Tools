@@ -5,7 +5,9 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.xr.arkit-face-tracking": "4.1.3"
+        "com.unity.xr.arkit-face-tracking": "4.1.3",
+        "com.unity.xr.arfoundation": "4.1.3",
+        "com.unity.xr.arkit": "4.1.3"
       }
     },
     "com.unity.editorcoroutines": {
