@@ -2,7 +2,7 @@
   "name": "com.edwon.arfacetools",
   "version": "1.0.0",
   "displayName": "AR Face Tools",
-  "description": "AR face tracking helpers",
+  "description": "AR face tracking tools",
   "unity": "2019.2",
   "unityRelease": "0f1",
   "keywords": [],
@@ -12,9 +12,5 @@
     "url": "https://www.edwon.tv"
   },
   "type": "tool",
-  "dependencies": {
-    "com.unity.xr.arkit-face-tracking": "4.1.3",
-    "com.unity.xr.arfoundation": "4.1.3",
-    "com.unity.xr.arkit": "4.1.3"
-  }
+  "dependencies": {}
 }
