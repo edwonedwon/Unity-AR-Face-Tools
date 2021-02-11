@@ -6,23 +6,23 @@ using System;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARKit;
 
+
 namespace Edwon.ARFaceTools
 {
     [RequireComponent(typeof(ARFace))]
     public class ARFaceEventSender : MonoBehaviour
     {
         ARFace arFace;
-
+        ARFaceManager arFaceManager;
         ARKitFaceSubsystem arKitFaceSubsystem;
         Dictionary<ARKitBlendShapeLocation, float> blendShapeValuesToSend;
 
         void Awake()
         {
             arFace = GetComponent<ARFace>();
-            #if UNITY_IOS && !UNITY_EDITOR        
-            arKitFaceSubsystem = AppManager.Instance.arFaceManager.subsystem as ARKitFaceSubsystem;
+            arFaceManager = FindObjectOfType<ARFaceManager>();
+            arKitFaceSubsystem = arFaceManager.subsystem as ARKitFaceSubsystem;
             blendShapeValuesToSend = new Dictionary<ARKitBlendShapeLocation, float>();
-            #endif
         }
 
         void OnFaceUpdated(ARFaceUpdatedEventArgs eventArgs)
