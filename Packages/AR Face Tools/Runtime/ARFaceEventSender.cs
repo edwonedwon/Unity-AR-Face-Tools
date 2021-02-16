@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARKit;
 
@@ -21,7 +22,7 @@ namespace Edwon.ARFaceTools
         {
             arFace = GetComponent<ARFace>();
             arFaceManager = FindObjectOfType<ARFaceManager>();
-            arKitFaceSubsystem = arFaceManager.subsystem as ARKitFaceSubsystem;
+            arKitFaceSubsystem = (ARKitFaceSubsystem)arFaceManager.subsystem;
             blendShapeValuesToSend = new Dictionary<ARKitBlendShapeLocation, float>();
         }
 
