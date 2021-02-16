@@ -121,112 +121,88 @@ namespace Edwon.ARFaceTools
         float tongueOut;
         #endregion
 
-        void OnFaceUpdatedEvent(ARFaceUpdatedEventArgs eventArgs, Dictionary<ARKitBlendShapeLocationSerializable, float> blendShapeValues)
+        Dictionary<ARKitBlendShapeLocationSerializable, float> blendShapeValues;
+
+        void OnFaceUpdatedEvent(ARFaceUpdatedEventArgs eventArgs, Dictionary<ARKitBlendShapeLocationSerializable, float> _blendShapeValues)
         {
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.BrowDownLeft, out browDownLeft))
-                browDownLeftEvent.Invoke(browDownLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.BrowDownRight, out browDownRight))
-                browDownRightEvent.Invoke(browDownRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.BrowInnerUp, out browInnerUp))
-                browInnerUpEvent.Invoke(browInnerUp);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.BrowOuterUpLeft, out browOuterUpLeft))
-                browOuterUpLeftEvent.Invoke(browOuterUpLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.BrowOuterUpRight, out browOuterUpRight))
-                browOuterUpRightEvent.Invoke(browOuterUpRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.CheekPuff, out cheekPuff))
-                cheekPuffEvent.Invoke(cheekPuff);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.CheekSquintLeft, out cheekSquintLeft))
-                cheekSquintLeftEvent.Invoke(cheekSquintLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.CheekSquintRight, out cheekSquintRight))
-                cheekSquintRightEvent.Invoke(cheekSquintRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeBlinkLeft, out eyeBlinkLeft))
-                eyeBlinkLeftEvent.Invoke(eyeBlinkLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeBlinkRight, out eyeBlinkRight))
-                eyeBlinkRightEvent.Invoke(eyeBlinkRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookDownLeft, out eyeLookDownLeft))
-                eyeLookDownLeftEvent.Invoke(eyeLookDownLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookDownRight, out eyeLookDownRight))
-                eyeLookDownRightEvent.Invoke(eyeLookDownRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookInLeft, out eyeLookInLeft))
-                eyeLookInLeftEvent.Invoke(eyeLookInLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookInRight, out eyeLookInRight))
-                eyeLookInRightEvent.Invoke(eyeLookInRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookOutLeft, out eyeLookOutLeft))
-                eyeLookOutLeftEvent.Invoke(eyeLookOutLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookOutRight, out eyeLookOutRight))
-                eyeLookOutRightEvent.Invoke(eyeLookOutRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookUpLeft, out eyeLookUpLeft))
-                eyeLookUpLeftEvent.Invoke(eyeLookUpLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookUpRight, out eyeLookUpRight))
-                eyeLookUpRightEvent.Invoke(eyeLookUpRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeSquintLeft, out eyeSquintLeft))
-                eyeSquintLeftEvent.Invoke(eyeSquintLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeSquintRight, out eyeSquintRight))
-                eyeSquintRightEvent.Invoke(eyeSquintRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeWideLeft, out eyeWideLeft))
-                eyeWideLeftEvent.Invoke(eyeWideLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeWideRight, out eyeWideRight))
-                eyeWideRightEvent.Invoke(eyeWideRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.JawForward, out jawForward))
-                jawForwardEvent.Invoke(jawForward);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.JawLeft, out jawLeft))
-                jawLeftEvent.Invoke(jawLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.JawOpen, out jawOpen))
-                jawOpenEvent.Invoke(jawOpen);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.JawRight, out jawRight))
-                jawRightEvent.Invoke(jawRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthClose, out mouthClose))
-                mouthCloseEvent.Invoke(mouthClose);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthDimpleLeft, out mouthDimpleLeft))
-                mouthDimpleLeftEvent.Invoke(mouthDimpleLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthDimpleRight, out mouthDimpleRight))
-                mouthDimpleRightEvent.Invoke(mouthDimpleRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthFrownLeft, out mouthFrownLeft))
-                mouthFrownLeftEvent.Invoke(mouthFrownLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthFrownRight, out mouthFrownRight))
-                mouthFrownRightEvent.Invoke(mouthFrownRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthFunnel, out mouthFunnel))
-                mouthFunnelEvent.Invoke(mouthFunnel);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthLeft, out mouthLeft))
-                mouthLeftEvent.Invoke(mouthLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthLowerDownLeft, out mouthLowerDownLeft))
-                mouthLowerDownLeftEvent.Invoke(mouthLowerDownLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthLowerDownRight, out mouthLowerDownRight))
-                mouthLowerDownRightEvent.Invoke(mouthLowerDownRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthPressLeft, out mouthPressLeft))
-                mouthPressLeftEvent.Invoke(mouthPressLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthPressRight, out mouthPressRight))
-                mouthPressRightEvent.Invoke(mouthPressRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthPucker, out mouthPucker))
-                mouthPuckerEvent.Invoke(mouthPucker);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthRight, out mouthRight))
-                mouthRightEvent.Invoke(mouthRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthRollLower, out mouthRollLower))
-                mouthRollLowerEvent.Invoke(mouthRollLower);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthRollUpper, out mouthRollUpper))
-                mouthRollUpperEvent.Invoke(mouthRollUpper);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthShrugLower, out mouthShrugLower))
-                mouthShrugLowerEvent.Invoke(mouthShrugLower);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthShrugUpper, out mouthShrugUpper))
-                mouthShrugUpperEvent.Invoke(mouthShrugUpper);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthSmileLeft, out mouthSmileLeft))
-                mouthSmileLeftEvent.Invoke(mouthSmileLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthSmileRight, out mouthSmileRight))
-                mouthSmileRightEvent.Invoke(mouthSmileRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthStretchLeft, out mouthStretchLeft))
-                mouthStretchLeftEvent.Invoke(mouthStretchLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthStretchRight, out mouthStretchRight))
-                mouthStretchRightEvent.Invoke(mouthStretchRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthUpperUpLeft, out mouthUpperUpLeft))
-                mouthUpperUpLeftEvent.Invoke(mouthUpperUpLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.MouthUpperUpRight, out mouthUpperUpRight))
-                mouthUpperUpRightEvent.Invoke(mouthUpperUpRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.NoseSneerLeft, out noseSneerLeft))
-                noseSneerLeftEvent.Invoke(noseSneerLeft);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.NoseSneerRight, out noseSneerRight))
-                noseSneerRightEvent.Invoke(noseSneerRight);
-            if (blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.TongueOut, out tongueOut))
-                tongueOutEvent.Invoke(tongueOut);
+            this.blendShapeValues = _blendShapeValues;
+
+            InvokeEvent(ARKitBlendShapeLocationSerializable.BrowDownLeft, browDownLeftEvent, out browDownLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.BrowDownRight, browDownRightEvent, out browDownRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.BrowInnerUp, browInnerUpEvent, out browInnerUp);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.BrowOuterUpLeft, browOuterUpLeftEvent, out browOuterUpLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.BrowOuterUpRight, browOuterUpRightEvent, out browOuterUpRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.CheekPuff, cheekPuffEvent, out cheekPuff);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.CheekSquintLeft, cheekSquintLeftEvent, out cheekSquintLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.CheekSquintRight, cheekSquintRightEvent, out cheekSquintRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeBlinkLeft, eyeBlinkLeftEvent, out eyeBlinkLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeBlinkRight, eyeBlinkRightEvent, out eyeBlinkRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookDownLeft, eyeLookDownLeftEvent, out eyeLookDownLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookDownRight, eyeLookDownRightEvent, out eyeLookDownRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookInLeft, eyeLookInLeftEvent, out eyeLookInLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookInRight, eyeLookInRightEvent, out eyeLookInRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookOutLeft, eyeLookOutLeftEvent, out eyeLookOutLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookOutRight, eyeLookOutRightEvent, out eyeLookOutRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookUpLeft, eyeLookUpLeftEvent, out eyeLookUpLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeLookUpRight, eyeLookUpRightEvent, out eyeLookUpRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeSquintLeft, eyeSquintLeftEvent, out eyeSquintLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeSquintRight, eyeSquintRightEvent, out eyeSquintRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeWideLeft, eyeWideLeftEvent, out eyeWideLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.EyeWideRight, eyeWideRightEvent, out eyeWideRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.JawForward, jawForwardEvent, out jawForward);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.JawLeft, jawLeftEvent, out jawLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.JawOpen, jawOpenEvent, out jawOpen);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.JawRight, jawRightEvent, out jawRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthClose, mouthCloseEvent, out mouthClose);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthDimpleLeft, mouthDimpleLeftEvent, out mouthDimpleLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthDimpleRight, mouthDimpleRightEvent, out mouthDimpleRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthFrownLeft, mouthFrownLeftEvent, out mouthFrownLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthFrownRight, mouthFrownRightEvent, out mouthFrownRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthFunnel, mouthFunnelEvent, out mouthFunnel);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthLeft, mouthLeftEvent, out mouthLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthLowerDownLeft, mouthLowerDownLeftEvent, out mouthLowerDownLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthLowerDownRight, mouthLowerDownRightEvent, out mouthLowerDownRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthPressLeft, mouthPressLeftEvent, out mouthPressLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthPressRight, mouthPressRightEvent, out mouthPressRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthPucker, mouthPuckerEvent, out mouthPucker);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthRight, mouthRightEvent, out mouthRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthRollLower, mouthRollLowerEvent, out mouthRollLower);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthRollUpper, mouthRollUpperEvent, out mouthRollUpper);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthShrugLower, mouthShrugLowerEvent, out mouthShrugLower);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthShrugUpper, mouthShrugUpperEvent, out mouthShrugUpper);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthSmileLeft, mouthSmileLeftEvent, out mouthSmileLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthSmileRight, mouthSmileRightEvent, out mouthSmileRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthStretchLeft, mouthStretchLeftEvent, out mouthStretchLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthStretchRight, mouthStretchRightEvent, out mouthStretchRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthUpperUpLeft, mouthUpperUpLeftEvent, out mouthUpperUpLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.MouthUpperUpRight, mouthUpperUpRightEvent, out mouthUpperUpRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.NoseSneerLeft, noseSneerLeftEvent, out noseSneerLeft);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.NoseSneerRight, noseSneerRightEvent, out noseSneerRight);
+            InvokeEvent(ARKitBlendShapeLocationSerializable.TongueOut, tongueOutEvent, out tongueOut);
+        }
+
+        void InvokeEvent(ARKitBlendShapeLocationSerializable blendShape, UnityEventFloat e, out float f)
+        {
+            if (!EventHasTarget(e))
+            {
+                f = 0;
+                return;
+            }
+
+            if (blendShapeValues.TryGetValue(blendShape, out f))
+                e.Invoke(f);
+        }
+
+        bool EventHasTarget(UnityEventFloat eventFloat)
+        {
+            for (int i = 0; i < eventFloat.GetPersistentEventCount(); i++)
+            {
+                if (eventFloat.GetPersistentTarget(i) != null)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         void OnEnable()
@@ -240,3 +216,55 @@ namespace Edwon.ARFaceTools
         }
     }
 }
+
+// can use similar logic to below to only render currently used events in inspector
+// not necessary right now but VERY NICE for the future
+// #if UNITY_EDITOR
+// namespace Edwon.ARFaceTools
+// {
+// 	using UnityEditor;
+
+// 	[CanEditMultipleObjects]
+// 	[CustomEditor(typeof(ARFaceEventRelay))]
+// 	public class ARFaceEventRelayInspector : Editor
+// 	{
+// 		private bool showUnusedEvents;
+
+// 		// Draw the whole inspector
+// 		public override void OnInspectorGUI()
+// 		{
+// 			EditorGUILayout.Separator();
+
+// 			var usedA = Any(t => t.OnSelect.GetPersistentEventCount() > 0);
+// 			var usedB = Any(t => t.OnSelectUpdate.GetPersistentEventCount() > 0);
+// 			var usedC = Any(t => t.OnSelectUp.GetPersistentEventCount() > 0);
+// 			var usedD = Any(t => t.OnDeselect.GetPersistentEventCount() > 0);
+
+// 			showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Show Unused Events");
+
+// 			EditorGUILayout.Separator();
+
+// 			if (usedA == true || showUnusedEvents == true)
+// 			{
+// 				Draw("onSelect");
+// 			}
+
+// 			if (usedB == true || showUnusedEvents == true)
+// 			{
+// 				Draw("onSelectUpdate");
+// 			}
+
+// 			if (usedC == true || showUnusedEvents == true)
+// 			{
+// 				Draw("onSelectUp");
+// 			}
+
+// 			if (usedD == true || showUnusedEvents == true)
+// 			{
+// 				Draw("onDeselect");
+// 			}
+// 		}
+// 	}
+
+// }
+// #endif
