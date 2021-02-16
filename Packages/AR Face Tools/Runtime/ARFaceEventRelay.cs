@@ -183,7 +183,7 @@ namespace Edwon.ARFaceTools
 
         void InvokeEvent(ARKitBlendShapeLocationSerializable blendShape, UnityEventFloat e, out float f)
         {
-            if (!EventHasTarget(e))
+            if (!Utils.EventHasTarget(e))
             {
                 f = 0;
                 return;
@@ -191,18 +191,6 @@ namespace Edwon.ARFaceTools
 
             if (blendShapeValues.TryGetValue(blendShape, out f))
                 e.Invoke(f);
-        }
-
-        bool EventHasTarget(UnityEventFloat eventFloat)
-        {
-            for (int i = 0; i < eventFloat.GetPersistentEventCount(); i++)
-            {
-                if (eventFloat.GetPersistentTarget(i) != null)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         void OnEnable()
@@ -216,55 +204,3 @@ namespace Edwon.ARFaceTools
         }
     }
 }
-
-// can use similar logic to below to only render currently used events in inspector
-// not necessary right now but VERY NICE for the future
-// #if UNITY_EDITOR
-// namespace Edwon.ARFaceTools
-// {
-// 	using UnityEditor;
-
-// 	[CanEditMultipleObjects]
-// 	[CustomEditor(typeof(ARFaceEventRelay))]
-// 	public class ARFaceEventRelayInspector : Editor
-// 	{
-// 		private bool showUnusedEvents;
-
-// 		// Draw the whole inspector
-// 		public override void OnInspectorGUI()
-// 		{
-// 			EditorGUILayout.Separator();
-
-// 			var usedA = Any(t => t.OnSelect.GetPersistentEventCount() > 0);
-// 			var usedB = Any(t => t.OnSelectUpdate.GetPersistentEventCount() > 0);
-// 			var usedC = Any(t => t.OnSelectUp.GetPersistentEventCount() > 0);
-// 			var usedD = Any(t => t.OnDeselect.GetPersistentEventCount() > 0);
-
-// 			showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Show Unused Events");
-
-// 			EditorGUILayout.Separator();
-
-// 			if (usedA == true || showUnusedEvents == true)
-// 			{
-// 				Draw("onSelect");
-// 			}
-
-// 			if (usedB == true || showUnusedEvents == true)
-// 			{
-// 				Draw("onSelectUpdate");
-// 			}
-
-// 			if (usedC == true || showUnusedEvents == true)
-// 			{
-// 				Draw("onSelectUp");
-// 			}
-
-// 			if (usedD == true || showUnusedEvents == true)
-// 			{
-// 				Draw("onDeselect");
-// 			}
-// 		}
-// 	}
-
-// }
-// #endif
