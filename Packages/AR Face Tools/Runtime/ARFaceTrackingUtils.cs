@@ -57,7 +57,7 @@ namespace Edwon.ARFaceTools
         // convert from ARKitBlendShapeLocation to ARKitBlendShapeLocationSerializable
         static void InitBlendShapeLocationIndexMaps()
         {
-            #if UNITY_IOS && !UNITY_EDITOR
+            #if UNITY_IOS
 
             // init ToARKit
             if (blendShapeIndexMapToARKit != null)

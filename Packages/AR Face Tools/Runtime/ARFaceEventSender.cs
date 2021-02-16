@@ -6,7 +6,9 @@ using System;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARKit;
-
+#if UNITY_EDITOR
+using ARKitFaceSubsystem = ARFoundationRemote.Runtime.FaceSubsystem;
+#endif
 
 namespace Edwon.ARFaceTools
 {
