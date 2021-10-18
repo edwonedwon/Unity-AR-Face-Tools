@@ -6,7 +6,7 @@ using System;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARKit;
-#if UNITY_EDITOR
+#if UNITY_EDITOR && EDWON_ARFOUNDATIONREMOTE
 using ARKitFaceSubsystem = ARFoundationRemote.Runtime.FaceSubsystem;
 #endif
 
@@ -17,14 +17,18 @@ namespace Edwon.ARFaceTools
     {
         ARFace arFace;
         ARFaceManager arFaceManager;
+        #if UNITY_EDITOR && EDWON_ARFOUNDATIONREMOTE
         ARKitFaceSubsystem arKitFaceSubsystem;
+        #endif
         Dictionary<ARKitBlendShapeLocation, float> blendShapeValuesToSend;
 
         void Awake()
         {
             arFace = GetComponent<ARFace>();
             arFaceManager = FindObjectOfType<ARFaceManager>();
+            #if UNITY_EDITOR && EDWON_ARFOUNDATIONREMOTE
             arKitFaceSubsystem = (ARKitFaceSubsystem)arFaceManager.subsystem;
+            #endif
             blendShapeValuesToSend = new Dictionary<ARKitBlendShapeLocation, float>();
         }
 
