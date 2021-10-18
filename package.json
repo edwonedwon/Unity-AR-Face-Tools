@@ -1,7 +1,7 @@
 {
   "name": "com.edwon.arfacetools",
   "version": "1.0.0",
-  "displayName": "AR Face Tools",
+  "displayName": "Edwon AR Face Tools",
   "description": "AR face tracking tools",
   "unity": "2019.2",
   "unityRelease": "0f1",
