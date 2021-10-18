@@ -17,9 +17,7 @@ namespace Edwon.ARFaceTools
     {
         ARFace arFace;
         ARFaceManager arFaceManager;
-        #if UNITY_EDITOR && EDWON_ARFOUNDATIONREMOTE
         ARKitFaceSubsystem arKitFaceSubsystem;
-        #endif
         Dictionary<ARKitBlendShapeLocation, float> blendShapeValuesToSend;
 
         void Awake()
@@ -34,6 +32,7 @@ namespace Edwon.ARFaceTools
 
         void OnFaceUpdated(ARFaceUpdatedEventArgs eventArgs)
         {
+
             using (NativeArray<ARKitBlendShapeCoefficient> blendShapes = arKitFaceSubsystem.GetBlendShapeCoefficients(arFace.trackableId, Allocator.Temp))
             {
                 foreach(ARKitBlendShapeCoefficient blendShape in blendShapes)
