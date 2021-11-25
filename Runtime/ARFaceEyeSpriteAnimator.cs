@@ -7,19 +7,50 @@ namespace Edwon.ARFaceTools
 {
     public class ARFaceEyeSpriteAnimator : MonoBehaviour
     {
-        public float eyeRadius;
+        float leftEyeUp;
+        float leftEyeDown;
+        float leftEyeIn;
+        float leftEyeOut;
+        float rightEyeUp;
+        float rightEyeDown;
+        float rightEyeIn;
+        float rightEyeOut;
 
-        public float upLeft;
-        public float downLeft;
-        public float upRight;
-        public float downRight;
+        public enum Side {Left, Right}
+        public Side side;
+        public Transform eyeCenter;
+        public Transform pupil;
+        public float eyeWhiteRadius;
+
+        void Update()
+        {
+            float x = 0;
+            float y = 0;
+            if (side == Side.Left)
+            {
+                x = leftEyeOut - leftEyeIn;
+                y = leftEyeUp - leftEyeDown;
+            }
+            else if (side == Side.Right)
+            {
+                x = rightEyeIn - rightEyeOut;
+                y = rightEyeUp - rightEyeDown;
+            }
+            Vector2 eyePos = new Vector2(x,y);
+            eyePos = Vector2.ClampMagnitude(eyePos, eyeWhiteRadius);
+            pupil.localPosition = eyePos;
+        }
 
         void OnFaceUpdatedEvent(ARFaceUpdatedEventArgs eventArgs, Dictionary<ARKitBlendShapeLocationSerializable, float> blendShapeValues)
         {   
-            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookUpLeft, out upLeft);
-            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookDownLeft, out downLeft);
-            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookUpRight, out upRight);
-            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookDownRight, out downRight);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookUpLeft, out leftEyeUp);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookDownLeft, out leftEyeDown);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookInLeft, out leftEyeIn);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookOutLeft, out leftEyeOut);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookUpRight, out rightEyeUp);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookDownRight, out rightEyeDown);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookInRight, out rightEyeIn);
+            blendShapeValues.TryGetValue(ARKitBlendShapeLocationSerializable.EyeLookOutRight, out rightEyeOut);
         }
 
         void OnEnable()
