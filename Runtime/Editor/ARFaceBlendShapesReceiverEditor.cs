@@ -14,8 +14,8 @@ namespace Edwon.ARFaceTools
 	using UnityEditor;
 
 	[CanEditMultipleObjects]
-	[CustomEditor(typeof(ARFaceEventRelay))]
-	public class ARFaceEventRelayInspector : Editor
+	[CustomEditor(typeof(ARFaceBlendShapesReceiver))]
+	public class ARFaceBlendShapesReceiverEditor : Editor
 	{
         SerializedProperty showEyeEvents;
         SerializedProperty showCheekEvents;
@@ -25,11 +25,11 @@ namespace Edwon.ARFaceTools
         SerializedProperty showOtherEvents;
 		private bool showUnusedEvents = false;    
 
-        ARFaceEventRelay script;
+        ARFaceBlendShapesReceiver script;
 
         void OnEnable()
         {
-            script = (ARFaceEventRelay)target;
+            script = (ARFaceBlendShapesReceiver)target;
 
             showEyeEvents = serializedObject.FindProperty("showEyeEvents");
             showCheekEvents = serializedObject.FindProperty("showCheekEvents");
@@ -51,9 +51,10 @@ namespace Edwon.ARFaceTools
             EditorGUILayout.PropertyField(showJawEvents);
             EditorGUILayout.PropertyField(showMouthEvents);
             EditorGUILayout.PropertyField(showOtherEvents);
+			
+            EditorGUILayout.Separator();
+
 			showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Unused Events");
-        
-			EditorGUILayout.Separator();
 
             if (showBrowEvents.boolValue)
             {

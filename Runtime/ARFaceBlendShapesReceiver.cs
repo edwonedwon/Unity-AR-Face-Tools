@@ -9,7 +9,7 @@ using Edwon.Tools;
 
 namespace Edwon.ARFaceTools
 {
-    public class ARFaceEventRelay : MonoBehaviour
+    public class ARFaceBlendShapesReceiver : MonoBehaviour
     {
         public bool showEyeEvents = true;
         public bool showCheekEvents = true;
