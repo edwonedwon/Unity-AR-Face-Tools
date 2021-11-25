@@ -17,38 +17,45 @@ namespace Edwon.ARFaceTools
 	[CustomEditor(typeof(ARFaceEventRelay))]
 	public class ARFaceEventRelayInspector : Editor
 	{
-		private bool showUnusedEvents = false;
-        private bool showEyeEvents = true;
-        private bool showCheekEvents = true;
-        private bool showBrowEvents = true;
-        private bool showJawEvents = true;
-        private bool showMouthEvents = true;
-        private bool showOtherEvents = true;
+        SerializedProperty showEyeEvents;
+        SerializedProperty showCheekEvents;
+        SerializedProperty showBrowEvents;
+        SerializedProperty showJawEvents;
+        SerializedProperty showMouthEvents;
+        SerializedProperty showOtherEvents;
+		private bool showUnusedEvents = false;    
 
         ARFaceEventRelay script;
 
         void OnEnable()
         {
             script = (ARFaceEventRelay)target;
+
+            showEyeEvents = serializedObject.FindProperty("showEyeEvents");
+            showCheekEvents = serializedObject.FindProperty("showCheekEvents");
+            showBrowEvents = serializedObject.FindProperty("showBrowEvents");
+            showJawEvents = serializedObject.FindProperty("showJawEvents");
+            showMouthEvents = serializedObject.FindProperty("showMouthEvents");
+            showOtherEvents = serializedObject.FindProperty("showOtherEvents");
         }
 
 		// Draw the whole inspector
 		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.Separator();
+            serializedObject.Update();
 
-            showEyeEvents = EditorGUILayout.Toggle("Show Eye Events", showEyeEvents);
-            showCheekEvents = EditorGUILayout.Toggle("Show Cheek Events", showCheekEvents);
-            showBrowEvents = EditorGUILayout.Toggle("Show Brow Events", showBrowEvents);
-            showJawEvents = EditorGUILayout.Toggle("Show Jaw Events", showJawEvents);
-            showMouthEvents = EditorGUILayout.Toggle("Show Mouth Events", showMouthEvents);
-            showOtherEvents = EditorGUILayout.Toggle("Show Other Events", showOtherEvents);
-            
+			EditorGUILayout.Separator();
+            EditorGUILayout.PropertyField(showEyeEvents);
+            EditorGUILayout.PropertyField(showCheekEvents);
+            EditorGUILayout.PropertyField(showBrowEvents);
+            EditorGUILayout.PropertyField(showJawEvents);
+            EditorGUILayout.PropertyField(showMouthEvents);
+            EditorGUILayout.PropertyField(showOtherEvents);
 			showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Unused Events");
         
 			EditorGUILayout.Separator();
 
-            if (showBrowEvents)
+            if (showBrowEvents.boolValue)
             {
                 DrawIfEventUsed(script.browDownLeftEvent, "browDownLeftEvent");
                 DrawIfEventUsed(script.browDownRightEvent, "browDownRightEvent");
@@ -56,13 +63,13 @@ namespace Edwon.ARFaceTools
                 DrawIfEventUsed(script.browOuterUpLeftEvent, "browOuterUpLeftEvent");
                 DrawIfEventUsed(script.browOuterUpRightEvent, "browOuterUpRightEvent");
             }
-            if (showCheekEvents)
+            if (showCheekEvents.boolValue)
             {
                 DrawIfEventUsed(script.cheekPuffEvent, "cheekPuffEvent");
                 DrawIfEventUsed(script.cheekSquintLeftEvent, "cheekSquintLeftEvent");
                 DrawIfEventUsed(script.cheekSquintRightEvent, "cheekSquintRightEvent");
             }
-            if (showEyeEvents)
+            if (showEyeEvents.boolValue)
             {
                 DrawIfEventUsed(script.eyeBlinkLeftEvent, "eyeBlinkLeftEvent");
                 DrawIfEventUsed(script.eyeBlinkRightEvent, "eyeBlinkRightEvent");
@@ -79,14 +86,14 @@ namespace Edwon.ARFaceTools
                 DrawIfEventUsed(script.eyeWideLeftEvent, "eyeWideLeftEvent");
                 DrawIfEventUsed(script.eyeWideRightEvent, "eyeWideRightEvent");
             }
-            if (showJawEvents)
+            if (showJawEvents.boolValue)
             {
                 DrawIfEventUsed(script.jawForwardEvent, "jawForwardEvent");
                 DrawIfEventUsed(script.jawLeftEvent, "jawLeftEvent");
                 DrawIfEventUsed(script.jawOpenEvent, "jawOpenEvent");
                 DrawIfEventUsed(script.jawRightEvent, "jawRightEvent");
             }
-            if (showMouthEvents)
+            if (showMouthEvents.boolValue)
             {
                 DrawIfEventUsed(script.mouthCloseEvent, "mouthCloseEvent");
                 DrawIfEventUsed(script.mouthDimpleLeftEvent, "mouthDimpleLeftEvent");
@@ -112,7 +119,7 @@ namespace Edwon.ARFaceTools
                 DrawIfEventUsed(script.mouthUpperUpLeftEvent, "mouthUpperUpLeftEvent");
                 DrawIfEventUsed(script.mouthUpperUpRightEvent, "mouthUpperUpRightEvent");
             }
-            if (showOtherEvents)
+            if (showOtherEvents.boolValue)
             {
                 DrawIfEventUsed(script.noseSneerLeftEvent, "noseSneerLeftEvent");
                 DrawIfEventUsed(script.noseSneerRightEvent, "noseSneerRightEvent");

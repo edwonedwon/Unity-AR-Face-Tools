@@ -11,6 +11,13 @@ namespace Edwon.ARFaceTools
 {
     public class ARFaceEventRelay : MonoBehaviour
     {
+        public bool showEyeEvents = true;
+        public bool showCheekEvents = true;
+        public bool showBrowEvents = true;
+        public bool showJawEvents = true;
+        public bool showMouthEvents = true;
+        public bool showOtherEvents = true;
+
         #region EVENTS
         public UnityEventFloat browDownLeftEvent;
         public UnityEventFloat browDownRightEvent;

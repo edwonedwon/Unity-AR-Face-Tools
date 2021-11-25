@@ -32,7 +32,6 @@ namespace Edwon.ARFaceTools
 
         void OnFaceUpdated(ARFaceUpdatedEventArgs eventArgs)
         {
-
             using (NativeArray<ARKitBlendShapeCoefficient> blendShapes = arKitFaceSubsystem.GetBlendShapeCoefficients(arFace.trackableId, Allocator.Temp))
             {
                 foreach(ARKitBlendShapeCoefficient blendShape in blendShapes)
