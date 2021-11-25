@@ -14,26 +14,37 @@ namespace Edwon.ARFaceTools
         }
 
         public PoseType poseType;
+
+        public bool matchPosition = true;
+        public bool matchRotation = true;
         
         void OnFaceUpdatedEvent(ARFaceUpdatedEventArgs eventArgs, Dictionary<ARKitBlendShapeLocationSerializable, float> _blendShapeValues)
         {
             switch (poseType)
             {
                 case PoseType.Head:
-                transform.position = eventArgs.face.transform.position;
-                transform.rotation = eventArgs.face.transform.rotation;
+                if (matchPosition)
+                    transform.position = eventArgs.face.transform.position;
+                if (matchRotation)
+                    transform.rotation = eventArgs.face.transform.rotation;
                 break;
                 case PoseType.LeftEye:
-                transform.position = eventArgs.face.leftEye.position;
-                transform.rotation = eventArgs.face.leftEye.rotation;
+                if (matchPosition)
+                    transform.position = eventArgs.face.leftEye.position;
+                if (matchRotation)
+                    transform.rotation = eventArgs.face.leftEye.rotation;
                 break;
                 case PoseType.RightEye:
-                transform.position = eventArgs.face.rightEye.position;
-                transform.rotation = eventArgs.face.rightEye.rotation;
+                if (matchPosition)
+                    transform.position = eventArgs.face.rightEye.position;
+                if (matchRotation)
+                    transform.rotation = eventArgs.face.rightEye.rotation;
                 break;
                 case PoseType.FixationPoint:
-                transform.position = eventArgs.face.fixationPoint.position;
-                transform.rotation = eventArgs.face.fixationPoint.rotation;
+                if (matchPosition)
+                    transform.position = eventArgs.face.fixationPoint.position;
+                if (matchRotation)
+                    transform.rotation = eventArgs.face.fixationPoint.rotation;
                 break;
             }
         }
